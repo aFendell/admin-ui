@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Card,
   CardContent,
@@ -7,47 +5,23 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  Bar,
-  BarChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts';
+import UserActivityChart from './user-activity-chart';
+import { Suspense } from 'react';
 
-const userActivity = [
-  {
-    date: '6d ago',
-    activeUsers: 120,
-  },
-  {
-    date: '5d ago',
-    activeUsers: 200,
-  },
-  {
-    date: '4d ago',
-    activeUsers: 150,
-  },
-  {
-    date: '3d ago',
-    activeUsers: 135,
-  },
-  {
-    date: '2d ago',
-    activeUsers: 180,
-  },
-  {
-    date: '1d ago',
-    activeUsers: 220,
-  },
-  {
-    date: 'today',
-    activeUsers: 240,
-  },
-];
+import type { UserActivity } from '../data/userActivity';
 
-function Analytics() {
+async function getUserActivity() {
+  const res = await fetch('http://localhost:3000/api/analytics');
+  if (!res.ok) throw new Error('Faild to fetch data');
+
+  const data: UserActivity = await res.json();
+
+  return data;
+}
+
+async function Analytics() {
+  const userActivity = await getUserActivity();
+
   return (
     <Card>
       <CardHeader className='px-7'>
@@ -55,14 +29,9 @@ function Analytics() {
         <CardDescription>Active Users</CardDescription>
       </CardHeader>
       <CardContent className='pt-6 h-80 w-full'>
-        <ResponsiveContainer width={'100%'} height={'100%'}>
-          <BarChart width={64} height={64} data={userActivity}>
-            <Tooltip />
-            <XAxis dataKey='date' />
-            <YAxis dataKey='activeUsers' />
-            <Bar dataKey='activeUsers' fill='#940cfd' />
-          </BarChart>
-        </ResponsiveContainer>
+        <Suspense fallback={<p>Loading activity...</p>}>
+          <UserActivityChart userActivity={userActivity} />
+        </Suspense>
       </CardContent>
     </Card>
   );
