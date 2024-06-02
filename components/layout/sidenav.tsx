@@ -19,6 +19,22 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
+type NavLinkProps = {
+  href: string;
+  children: React.ReactNode;
+};
+
+function NavLink({ href, children }: NavLinkProps) {
+  return (
+    <Link
+      href={href}
+      className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
+    >
+      {children}
+    </Link>
+  );
+}
+
 function Sidenav() {
   return (
     <div className='hidden border-r bg-muted/40 md:block'>
@@ -35,44 +51,26 @@ function Sidenav() {
         </div>
         <div className='flex-1 border border-yellow-500'>
           <nav className='grid items-start px-2 text-sm font-medium lg:px-4'>
-            <Link
-              href='/'
-              className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
-            >
+            <NavLink href='/'>
               <Home className='h-4 w-4' />
               Dashboard
-            </Link>
-            <Link
-              href='/orders'
-              className='flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary'
-            >
+            </NavLink>
+            <NavLink href='/orders'>
               <ShoppingCart className='h-4 w-4' />
               Orders
-              <Badge className='ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full'>
-                6
-              </Badge>
-            </Link>
-            <Link
-              href='/products'
-              className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
-            >
+            </NavLink>
+            <NavLink href='/products'>
               <Package className='h-4 w-4' />
-              Products{' '}
-            </Link>
-            <Link
-              href='/customers'
-              className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
-            >
+              Products
+            </NavLink>
+            <NavLink href='/customers'>
               <Users className='h-4 w-4' />
               Customers
-            </Link>
-            <Link
-              href='/analytics'
-              className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
-            >
+            </NavLink>
+            <NavLink href='/analytics'>
               <LineChart className='h-4 w-4' />
               Analytics
-            </Link>
+            </NavLink>
           </nav>
         </div>
         <div className='mt-auto p-4 border border-red-500'>
