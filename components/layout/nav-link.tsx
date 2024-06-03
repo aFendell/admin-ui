@@ -11,7 +11,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-function NavLink({ href, children }: Props) {
+const NavLink = ({ href, children }: Props) => {
   const pathname = usePathname();
 
   return (
@@ -25,6 +25,6 @@ function NavLink({ href, children }: Props) {
       {children}
     </Link>
   );
-}
+};
 
 export default NavLink;

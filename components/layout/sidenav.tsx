@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import NavLink from './nav-link';
 import SidenavFooter from './sidenav-footer';
 
-function Sidenav() {
+const Sidenav = () => {
   return (
     <div className='hidden border-r bg-muted/40 md:block'>
       <div className='flex h-full max-h-screen flex-col gap-2'>
@@ -55,6 +55,6 @@ function Sidenav() {
       </div>
     </div>
   );
-}
+};
 
 export default Sidenav;

@@ -20,7 +20,7 @@ import {
   CardHeader,
   CardTitle,
 } from '../ui/card';
-import { ModeToggle } from '../ui/mode-toggle';
+import ModeToggle from '../ui/mode-toggle';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,7 +31,7 @@ import {
 } from '../ui/dropdown-menu';
 import SearchForm from '../forms/search-form';
 
-function Header() {
+const Header = () => {
   return (
     <header className='flex h-14 border border-blue-500 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6'>
       <Sheet>
@@ -129,6 +129,6 @@ function Header() {
       </DropdownMenu>
     </header>
   );
-}
+};
 
 export default Header;

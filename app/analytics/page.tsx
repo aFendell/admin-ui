@@ -10,16 +10,16 @@ import { Suspense } from 'react';
 
 import type { UserActivity } from '../data/userActivity';
 
-async function getUserActivity() {
+const getUserActivity = async () => {
   const res = await fetch('http://localhost:3000/api/analytics');
   if (!res.ok) throw new Error('Faild to fetch data');
 
   const data: UserActivity = await res.json();
 
   return data;
-}
+};
 
-async function Analytics() {
+const Analytics = async () => {
   const userActivity = await getUserActivity();
 
   return (
@@ -35,6 +35,6 @@ async function Analytics() {
       </CardContent>
     </Card>
   );
-}
+};
 
 export default Analytics;

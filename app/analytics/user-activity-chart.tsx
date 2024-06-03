@@ -11,7 +11,11 @@ import {
 
 import type { UserActivity } from '../data/userActivity';
 
-function UserActivityChart({ userActivity }: { userActivity: UserActivity }) {
+type Props = {
+  userActivity: UserActivity;
+};
+
+const UserActivityChart = ({ userActivity }: Props) => {
   return (
     <ResponsiveContainer width={'100%'} height={'100%'}>
       <BarChart width={64} height={64} data={userActivity}>
@@ -22,6 +26,6 @@ function UserActivityChart({ userActivity }: { userActivity: UserActivity }) {
       </BarChart>
     </ResponsiveContainer>
   );
-}
+};
 
 export default UserActivityChart;

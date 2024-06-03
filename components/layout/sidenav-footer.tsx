@@ -7,7 +7,7 @@ import {
 } from '../ui/card';
 import { Button } from '../ui/button';
 
-function SidenavFooter() {
+const SidenavFooter = () => {
   return (
     <div className='mt-auto p-4 border border-pink-500'>
       <Card x-chunk='dashboard-02-chunk-0'>
@@ -25,6 +25,6 @@ function SidenavFooter() {
       </Card>
     </div>
   );
-}
+};
 
 export default SidenavFooter;

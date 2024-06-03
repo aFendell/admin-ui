@@ -4,7 +4,6 @@ import z from 'zod';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Search } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '../ui/input';
 import TextField from './TextField';
 
 const formSchema = z.object({
@@ -13,7 +12,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-function SearchForm() {
+const SearchForm = () => {
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,6 +38,6 @@ function SearchForm() {
       </form>
     </FormProvider>
   );
-}
+};
 
 export default SearchForm;

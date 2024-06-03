@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 
-function Products() {
+const Products = () => {
   return (
     <Card>
       <CardHeader className='px-7'>
@@ -16,6 +16,6 @@ function Products() {
       <CardContent></CardContent>
     </Card>
   );
-}
+};
 
 export default Products;

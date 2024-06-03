@@ -15,7 +15,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 
-export default function Orders() {
+const Orders = () => {
   return (
     <Card>
       <CardHeader className='px-7'>
@@ -169,4 +169,6 @@ export default function Orders() {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default Orders;
