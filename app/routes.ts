@@ -5,3 +5,5 @@ export const routes = {
   customers: 'customers',
   analytics: 'analytics',
 } as const;
+
+export type Route = (typeof routes)[keyof typeof routes];

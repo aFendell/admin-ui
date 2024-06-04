@@ -1,17 +1,10 @@
 import Link from 'next/link';
-import {
-  Bell,
-  Home,
-  LineChart,
-  Package,
-  Package2,
-  ShoppingCart,
-  Users,
-} from 'lucide-react';
+import { Bell, Package2 } from 'lucide-react';
 
 import { routes } from '@/app/routes';
 import { Button } from '@/components/ui/button';
-import NavLink from './nav-link';
+import NavLink from '@/components/ui/nav-link';
+import IconComponent from '@/components/ui/icon-component';
 import SidenavFooter from './sidenav-footer';
 
 const Sidenav = () => {
@@ -30,26 +23,16 @@ const Sidenav = () => {
         </div>
         <div className='flex-1 border border-yellow-500'>
           <nav className='grid items-start px-2 text-sm font-medium lg:px-4'>
-            <NavLink href={`/`}>
-              <Home className='h-4 w-4' />
-              {routes.dashboard}
-            </NavLink>
-            <NavLink href={`/${routes.orders}`}>
-              <ShoppingCart className='h-4 w-4' />
-              {routes.orders}
-            </NavLink>
-            <NavLink href={`/${routes.products}`}>
-              <Package className='h-4 w-4' />
-              {routes.products}
-            </NavLink>
-            <NavLink href={`/${routes.customers}`}>
-              <Users className='h-4 w-4' />
-              {routes.customers}
-            </NavLink>
-            <NavLink href={`/${routes.analytics}`}>
-              <LineChart className='h-4 w-4' />
-              {routes.products}
-            </NavLink>
+            <ul>
+              {Object.values(routes).map((route) => (
+                <NavLink route={route} key={route}>
+                  <>
+                    <IconComponent route={route} />
+                    {route}
+                  </>
+                </NavLink>
+              ))}
+            </ul>
           </nav>
         </div>
         <SidenavFooter />
