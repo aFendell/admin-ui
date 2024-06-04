@@ -9,6 +9,7 @@ import {
   Users,
 } from 'lucide-react';
 
+import { routes } from '@/app/routes';
 import { Button } from '@/components/ui/button';
 import NavLink from './nav-link';
 import SidenavFooter from './sidenav-footer';
@@ -29,25 +30,25 @@ const Sidenav = () => {
         </div>
         <div className='flex-1 border border-yellow-500'>
           <nav className='grid items-start px-2 text-sm font-medium lg:px-4'>
-            <NavLink href='/'>
+            <NavLink href={`/`}>
               <Home className='h-4 w-4' />
-              Dashboard
+              {routes.dashboard}
             </NavLink>
-            <NavLink href='/orders'>
+            <NavLink href={`/${routes.orders}`}>
               <ShoppingCart className='h-4 w-4' />
-              Orders
+              {routes.orders}
             </NavLink>
-            <NavLink href='/products'>
+            <NavLink href={`/${routes.products}`}>
               <Package className='h-4 w-4' />
-              Products
+              {routes.products}
             </NavLink>
-            <NavLink href='/customers'>
+            <NavLink href={`/${routes.customers}`}>
               <Users className='h-4 w-4' />
-              Customers
+              {routes.customers}
             </NavLink>
-            <NavLink href='/analytics'>
+            <NavLink href={`/${routes.analytics}`}>
               <LineChart className='h-4 w-4' />
-              Analytics
+              {routes.products}
             </NavLink>
           </nav>
         </div>

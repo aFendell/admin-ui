@@ -18,7 +18,7 @@ const NavLink = ({ href, children }: Props) => {
     <Link
       href={href}
       className={cn(
-        'flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary',
+        'flex capitalize items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary',
         href === pathname ? 'bg-muted text-primary' : 'text-muted-foreground'
       )}
     >
