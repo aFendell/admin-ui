@@ -8,20 +8,7 @@ import {
 import UserActivityChart from './user-activity-chart';
 import { Suspense } from 'react';
 
-import type { UserActivity } from '../data/userActivity';
-
-const getUserActivity = async () => {
-  const res = await fetch('http://localhost:3000/api/analytics');
-  if (!res.ok) throw new Error('Faild to fetch data');
-
-  const data: UserActivity = await res.json();
-
-  return data;
-};
-
-const Analytics = async () => {
-  const userActivity = await getUserActivity();
-
+const Analytics = () => {
   return (
     <Card>
       <CardHeader className='px-7'>
@@ -29,8 +16,8 @@ const Analytics = async () => {
         <CardDescription>Active Users</CardDescription>
       </CardHeader>
       <CardContent className='pt-6 h-80 w-full'>
-        <Suspense fallback={<p>Loading activity...</p>}>
-          <UserActivityChart userActivity={userActivity} />
+        <Suspense fallback={<h2>Loading activity...</h2>}>
+          <UserActivityChart />
         </Suspense>
       </CardContent>
     </Card>
